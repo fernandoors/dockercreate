@@ -14,7 +14,7 @@ export const Flex = styled.div`
       margin: 0 20px;
     }
     label {
-      width: 100px;
+      width: 110px;
       margin-right: 20px;
     }
 

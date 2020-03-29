@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `GetDocker`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Docker Create`,
+    description: `Create your Dockerfile .`,
+    author: `@brpadilha and @fernandoors`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,6 +31,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
