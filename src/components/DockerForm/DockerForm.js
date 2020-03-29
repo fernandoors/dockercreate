@@ -1,8 +1,32 @@
 import { Button, Card, Input, Radio, Select } from "antd"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Container, Flex } from "./styles"
+import { download } from "../../utils/downloadFile"
 
 export default function DockerForm() {
+  const [data, setData] = useState(`FROM node:10-slim
+          WORKDIR /app
+
+          COPY package.json /app
+
+          RUN  yarn && yarn cache clean
+
+          COPY .  .
+
+          COPY --chown=node:node . .
+
+          USER node
+
+          EXPOSE 3333
+
+          VOLUME [ "/app" ]
+
+          CMD [ "yarn", "start" ]`)
+
+  function handleDownload() {
+    download("Dockerfile", data)
+  }
+
   return (
     <>
       <Container>
@@ -49,7 +73,8 @@ export default function DockerForm() {
           <Input></Input>
         </Card>
         <div>
-          <Button type="primary" disabled="true">
+          <Button type="primary">Gerar download</Button>
+          <Button type="primary" onClick={handleDownload}>
             Download
           </Button>
         </div>
