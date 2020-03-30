@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
   .ant-card {
     margin-bottom: 20px;
+    border-radius: 10px;
   }
   .ant-collapse{
     margin-top: 20px;
