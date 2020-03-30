@@ -1,5 +1,10 @@
 import styled from "styled-components"
 
+export const Container = styled.div`
+  .ant-card {
+    margin-bottom: 30px;
+  }
+`
 export const ButtonComponent = styled.div`
   display: grid;
   padding: 30px;

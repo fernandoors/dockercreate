@@ -1,6 +1,16 @@
 import styled from "styled-components"
 
-export const Container = styled.div``
+export const Container = styled.div`
+  .ant-card {
+    margin-bottom: 20px;
+  }
+  .ant-collapse{
+    margin-top: 20px;
+  }
+  .ant-collapse-extra{
+    margin: 0 20px;
+  }
+`
 export const Flex = styled.div`
   display: flex;
   margin: 15px 0;
@@ -32,4 +42,21 @@ export const Flex = styled.div`
       margin: 0 20px;
     }
   }
+`
+
+export const Extras = styled.div`
+  display: flex;
+  margin: 20px 0;
+  .ant-select{
+    width: 100px;
+    margin-right: 20px;
+  }
+  .ant-input {
+    flex: 1;
+    margin-right: 20px;
+  }
+  .ant-button{
+    width: 80px;
+  }
+  
 `

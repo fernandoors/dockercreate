@@ -1,16 +1,15 @@
 import React from "react"
 
-import { ButtonComponent } from "./styles"
+import { ButtonComponent, Container } from "./styles"
 import { templateImage } from "../../utils/templateImage"
 import { Button, Card } from "antd"
 
 export default function Buttons() {
   return (
-    <>
+    <Container>
       <Card
         title="IMAGE TEMPLATE"
         extra={<a href="#"></a>}
-        // style={{ width: 300 }}
       >
         <ButtonComponent>
           {templateImage.map(image => (
@@ -20,6 +19,6 @@ export default function Buttons() {
           ))}
         </ButtonComponent>
       </Card>
-    </>
+    </Container>
   )
 }
