@@ -4,7 +4,7 @@ import { ButtonComponent, Container } from "./styles"
 import { templateImage } from "../../utils/templateImage"
 import { Button, Card } from "antd"
 
-export default function Buttons() {
+export default function Buttons({ handleTemplate }) {
   return (
     <Container>
       <Card
@@ -13,8 +13,8 @@ export default function Buttons() {
       >
         <ButtonComponent>
           {templateImage.map(image => (
-            <Button key={image.id} type="primary">
-              {image.name}
+            <Button key={image.name} type="primary" onClick={() => handleTemplate(image)}>
+              {image.id}
             </Button>
           ))}
         </ButtonComponent>

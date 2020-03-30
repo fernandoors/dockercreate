@@ -1,74 +1,28 @@
-import { Button, Card, Input, Radio, Select, Collapse, message } from "antd"
-import React, { useState, useEffect } from "react"
+import React from "react"
+import { Button, Card, Input, Radio, Select, Collapse } from "antd"
 import { Container, Flex, Extras } from "./styles"
-import { download } from "../../utils/downloadFile"
-import generateDockerFile from "../../utils/generateDockerFile"
-import { mongoObjectId } from "../../utils/idGenerate"
 import { PlusCircleOutlined } from '@ant-design/icons'
-const extraCommands = () => ({
-  id: mongoObjectId(),
-  key: '',
-  value: '',
-  extra: ''
-})
-export default function DockerForm() {
-  const [data, setData] = useState({
-    name: '',
-    version: '',
-    size: '',
-    dirSource: '',
-    dirDestination: '',
-    packageFile: '',
-    libInstall: '',
-    ports: '',
-    runScript: '',
-    extraCommands: [extraCommands()]
-  })
 
-  function handleInput({ target }) {
-    const { value, name } = target
-    setData({ ...data, [name]: value })
-  }
-
-  function handleSelect(key, value) {
-    setData({ ...data, [key]: value })
-  }
-
-  function handleDownload() {
-    const generateDocker = generateDockerFile(data)
-    if (typeof generateDocker === 'string') {
-      return download("Dockerfile", generateDocker)
-    } else {
-      message.error('Error in fields')
-    }
-  }
-
-  function handleNewCommand(event) {
-    event.stopPropagation();
-    setData({ ...data, extraCommands: [...data.extraCommands, extraCommands()] })
-  }
-  function handleDeleteCommand(id) {
-    const extraCommands = data.extraCommands.filter(item => item.id !== id)
-    setData({ ...data, extraCommands })
-  }
-  function handleExtraSelect(id, key, value) {
-    const extraData = data.extraCommands.map(item => {
-      if (item.id === id) {
-        item[key] = value
-      }
-      return item
-    })
-    setData({ ...data, extraCommands: extraData })
-  }
-  function handleExtraInput(id, key, value) {
-    const extraData = data.extraCommands.map(item => {
-      if (item.id === id) {
-        item[key] = value
-      }
-      return item
-    })
-    setData({ ...data, extraCommands: extraData })
-  }
+export default function DockerForm(props) {
+  // const [version, setVersion] = useState([])
+  const {
+    data,
+    handleInput,
+    handleSelect,
+    handleDownload,
+    handleNewCommand,
+    handleDeleteCommand,
+    handleExtraSelect,
+    handleExtraInput
+  } = props
+  // useEffect(() => {
+  //   async function getImageVersions() {
+  //     const response = await Axios.get(`https://registry.hub.docker.com/v1/repositories/${data.name}/tags`)
+  //     return response.data
+  //   }
+  //   console.log(getImageVersions())
+  //   setVersion([])
+  // }, [data.name])
   return (
     <>
       <Container>
@@ -91,7 +45,7 @@ export default function DockerForm() {
             <div>
               <label htmlFor="Size of Image">IMAGE SIZE</label>
               <Radio.Group size="small" name='size' value={data.size} onChange={handleInput} >
-                <Radio.Button value="common">COMMON</Radio.Button>
+                <Radio.Button value="default">DEFAULT</Radio.Button>
                 <Radio.Button value="slim">SLIM</Radio.Button>
                 <Radio.Button value="alpine">ALPINE</Radio.Button>
               </Radio.Group>
@@ -118,29 +72,31 @@ export default function DockerForm() {
               extra={<PlusCircleOutlined onClick={handleNewCommand} />}
               header="Extra Commands" key="extra-commands"
             >
-              {data.extraCommands.map(item =>
-                <Extras key={item.id}>
-                  <Select valeu={item.key} onChange={data => handleExtraSelect(item.id, 'key', data)}>
+              {data.extraCommands.map(extras =>
+                <Extras key={extras.id}>
+                  <Select value={extras.key} onChange={data => handleExtraSelect(extras.id, 'key', data)}>
                     <Select.Option value='ENV'>ENV</Select.Option>
                     <Select.Option value='COPY'>COPY</Select.Option>
                     <Select.Option value='RUN'>RUN</Select.Option>
                     <Select.Option value='USER'>USER</Select.Option>
+                    <Select.Option value='VOLUME'>VOLUME</Select.Option>
+                    <Select.Option value='LABEL'>LABEL</Select.Option>
                   </Select>
-                  {item.key === 'COPY' ?
+                  {extras.key === 'COPY' || extras.key === 'ENV' ?
                     <>
                       <Input placeholder='Data Source'
-                        value={item.value}
-                        onChange={e => handleExtraInput(item.id, 'value', e.target.value)}
+                        value={extras.value}
+                        onChange={e => handleExtraInput(extras.id, 'value', e.target.value)}
                       />
                       <Input placeholder='Data Destination'
-                        value={item.extra}
-                        onChange={e => handleExtraInput(item.id, 'extra', e.target.value)}
+                        value={extras.extra}
+                        onChange={e => handleExtraInput(extras.id, 'extra', e.target.value)}
                       />
                     </>
                     :
-                    <Input value={item.value} onChange={e => handleExtraInput(item.id, 'value', e.target.value)} />
+                    <Input value={extras.value} onChange={e => handleExtraInput(extras.id, 'value', e.target.value)} />
                   }
-                  <Button onClick={() => handleDeleteCommand(item.id)}>
+                  <Button type='danger' onClick={() => handleDeleteCommand(extras.id)}>
                     Delete
                   </Button>
                 </Extras>

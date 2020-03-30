@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "antd": "^4.0.4",
+    "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.44",
