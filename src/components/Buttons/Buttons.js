@@ -13,7 +13,7 @@ export default function Buttons({ handleTemplate }) {
       >
         <ButtonComponent>
           {templateImage.map(image => (
-            <Button key={image.name} type="primary" onClick={() => handleTemplate(image)}>
+            <Button key={image.name} shape="round" type="primary" onClick={() => handleTemplate(image)}>
               {image.id}
             </Button>
           ))}

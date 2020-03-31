@@ -26,27 +26,12 @@ const IndexPage = () => {
     runScript: "",
     extraCommands: [extraCommands()],
   })
-
   const [preview, setPreview] = useState("")
+  const [modalVisible, setModalVisible] = useState(false)
 
-  const parsedData = generateDockerFile(data)
-    .split("\n")
-    .map((item, i) => {
-      return <p key={i}>{item}</p>
-    })
-
-  const [state, setState] = useState({ visible: false })
-
-  function showModal(e) {
-    setState({ visible: true })
-  }
-
-  function handleOk(e) {
-    setState({ visible: false })
-  }
-
-  function handleCancel(e) {
-    setState({ visible: false })
+  function handleModal() {
+    setPreview(generateDockerFile(data))
+    setModalVisible(!modalVisible)
   }
 
   function handleInput({ target }) {
@@ -56,6 +41,12 @@ const IndexPage = () => {
 
   function handleSelect(key, value) {
     setData({ ...data, [key]: value })
+  }
+
+  function handleCopy() {
+    const generateDocker = generateDockerFile(data)
+    navigator.clipboard.writeText(generateDocker)
+    message.success('Copy to clipboard')
   }
 
   function handleDownload() {
@@ -114,17 +105,17 @@ const IndexPage = () => {
         handleExtraInput={handleExtraInput}
       />
       <div>
-        <Button type="primary" onClick={showModal}>
+        <Button type="primary" shape='round' onClick={handleModal}>
           Gerar download
         </Button>
         <Modal
           title="Gerar download"
-          visible={state.visible}
+          visible={modalVisible}
           onOk={handleDownload}
-          onCancel={handleCancel}
+          onCancel={handleModal}
           footer={[
-            <Button onClick={handleCancel}>Cancel</Button>,
-            <Button type="dashed" onClick={handleDownload}>
+            <Button onClick={handleModal}>Cancel</Button>,
+            <Button type="dashed" onClick={handleCopy}>
               Copy
             </Button>,
 
@@ -133,7 +124,10 @@ const IndexPage = () => {
             </Button>,
           ]}
         >
-          {parsedData}
+          {preview.split("\n")
+            .map((item, i) =>
+              <p key={item + i}>{item}</p>
+            )}
         </Modal>
       </div>
       <br />
