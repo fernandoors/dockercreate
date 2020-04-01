@@ -1,40 +1,49 @@
-import React, { useState } from "react"
-import { Button, Card, Input, Radio, Select, Collapse } from "antd"
+import React from "react"
+import { Button, Card, Input, Radio, Select, Collapse, Tooltip } from "antd"
 import { Container, Flex, Extras } from "./styles"
-import { PlusCircleOutlined } from "@ant-design/icons"
+import { PlusCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons"
 
 export default function DockerForm(props) {
-  // const [version, setVersion] = useState([])
   const {
     data,
     handleInput,
     handleSelect,
-    handleDownload,
+    handleModal,
     handleNewCommand,
     handleDeleteCommand,
     handleExtraSelect,
     handleExtraInput,
+    handleCleanState
   } = props
-  // useEffect(() => {
-  //   async function getImageVersions() {
-  //     const response = await Axios.get(`https://registry.hub.docker.com/v1/repositories/${data.name}/tags`)
-  //     return response.data
-  //   }
-  //   console.log(getImageVersions())
-  //   setVersion([])
-  // }, [data.name])
 
   return (
     <>
       <Container>
-        <Card title="Docker File Form">
+        <Card title="Docker File Form" extra={
+          <>
+            <Button type="danger" onClick={handleCleanState}>
+              Clean
+            </Button>
+            <Button type="primary" onClick={handleModal}>
+              Generate
+            </Button>
+          </>
+        }>
           <Flex>
             <div>
-              <label htmlFor="Image Name">FROM</label>
+              <label htmlFor="Image Name">FROM
+                <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Input name="name" value={data.name} onChange={handleInput} />
             </div>
             <div>
-              <label htmlFor="Image Version Reference">VERSION</label>
+              <label htmlFor="Image Version Reference">VERSION
+              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Select
                 value={data.version}
                 onChange={value => handleSelect("version", value)}
@@ -47,7 +56,11 @@ export default function DockerForm(props) {
           </Flex>
           <Flex>
             <div>
-              <label htmlFor="Size of Image">IMAGE SIZE</label>
+              <label htmlFor="Size of Image">IMAGE SIZE
+              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Radio.Group
                 size="small"
                 name="size"
@@ -60,13 +73,21 @@ export default function DockerForm(props) {
               </Radio.Group>
             </div>
             <div>
-              <label htmlFor="Ports Usage in your Project">PORTS</label>
+              <label htmlFor="Ports Usage in your Project">PORTS
+              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Input name="ports" value={data.ports} onChange={handleInput} />
             </div>
           </Flex>
           <Flex>
             <div>
-              <label htmlFor="Code Source in your Machine">CODE SOURCE</label>
+              <label htmlFor="Code Source in your Machine">CODE SOURCE
+              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Input
                 name="dirSource"
                 value={data.dirSource}
@@ -74,7 +95,11 @@ export default function DockerForm(props) {
               />
             </div>
             <div>
-              <label htmlFor="Code Destination in Container">CODE DEST</label>
+              <label htmlFor="Code Destination in Container">CODE DEST
+              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </label>
               <Input
                 name="dirDestination"
                 value={data.dirDestination}
@@ -82,7 +107,11 @@ export default function DockerForm(props) {
               />
             </div>
           </Flex>
-          <label htmlFor="CLI script to run project">START SCRIPT</label>
+          <label htmlFor="CLI script to run project">START SCRIPT
+          <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <QuestionCircleOutlined />
+            </Tooltip>
+          </label>
           <Input.TextArea value={data.runScript} onChange={handleInput} />
           <Collapse bordered={false}>
             <Collapse.Panel
@@ -121,13 +150,13 @@ export default function DockerForm(props) {
                       />
                     </>
                   ) : (
-                    <Input
-                      value={extras.value}
-                      onChange={e =>
-                        handleExtraInput(extras.id, "value", e.target.value)
-                      }
-                    />
-                  )}
+                      <Input
+                        value={extras.value}
+                        onChange={e =>
+                          handleExtraInput(extras.id, "value", e.target.value)
+                        }
+                      />
+                    )}
                   <Button
                     type="danger"
                     onClick={() => handleDeleteCommand(extras.id)}
@@ -139,12 +168,6 @@ export default function DockerForm(props) {
             </Collapse.Panel>
           </Collapse>
         </Card>
-        <div>
-          {/* <Button type="primary">Gerar download</Button>
-          <Button type="primary" onClick={handleDownload}>
-            Download
-          </Button> */}
-        </div>
       </Container>
     </>
   )

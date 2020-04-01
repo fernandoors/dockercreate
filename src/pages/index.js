@@ -5,29 +5,35 @@ import SEO from "../components/seo"
 import Buttons from "../components/Buttons/Buttons"
 import DockerForm from "../components/DockerForm/DockerForm"
 import How from "../components/How/index"
-// import Clipbox from "../components/Clipbox/index"
-import { Modal, Button, message } from "antd"
+import { message } from "antd"
 
 import { download } from "../utils/downloadFile"
 import generateDockerFile from "../utils/generateDockerFile"
 
 import { extraCommands } from "../utils/templateImage"
+import ModalPreview from "../components/ModalPreview/ModalPreview"
+
+const initialStateData = {
+  name: "",
+  version: "",
+  size: "",
+  dirSource: "",
+  dirDestination: "",
+  packageFile: "",
+  libInstall: "",
+  ports: "",
+  runScript: "",
+  extraCommands: [extraCommands()],
+}
 
 const IndexPage = () => {
-  const [data, setData] = useState({
-    name: "",
-    version: "",
-    size: "",
-    dirSource: "",
-    dirDestination: "",
-    packageFile: "",
-    libInstall: "",
-    ports: "",
-    runScript: "",
-    extraCommands: [extraCommands()],
-  })
+  const [data, setData] = useState(initialStateData)
   const [preview, setPreview] = useState("")
   const [modalVisible, setModalVisible] = useState(false)
+
+  function handleCleanState() {
+    setData(initialStateData)
+  }
 
   function handleModal() {
     setPreview(generateDockerFile(data))
@@ -103,32 +109,18 @@ const IndexPage = () => {
         handleDeleteCommand={handleDeleteCommand}
         handleExtraSelect={handleExtraSelect}
         handleExtraInput={handleExtraInput}
+        handleModal={handleModal}
+        handleCleanState={handleCleanState}
       />
       <div>
-        <Button type="primary" shape='round' onClick={handleModal}>
-          Gerar download
-        </Button>
-        <Modal
-          title="Gerar download"
-          visible={modalVisible}
-          onOk={handleDownload}
-          onCancel={handleModal}
-          footer={[
-            <Button onClick={handleModal}>Cancel</Button>,
-            <Button type="dashed" onClick={handleCopy}>
-              Copy
-            </Button>,
 
-            <Button type="primary" onClick={handleDownload}>
-              Download
-            </Button>,
-          ]}
-        >
-          {preview.split("\n")
-            .map((item, i) =>
-              <p key={item + i}>{item}</p>
-            )}
-        </Modal>
+        <ModalPreview
+          modalVisible={modalVisible}
+          handleDownload={handleDownload}
+          handleModal={handleModal}
+          handleCopy={handleCopy}
+          preview={preview}
+        />
       </div>
       <br />
       <How />

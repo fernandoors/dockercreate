@@ -5,11 +5,17 @@ export const Container = styled.div`
     margin-bottom: 20px;
     border-radius: 10px;
   }
-  .ant-collapse{
+  .ant-collapse {
     margin-top: 20px;
   }
-  .ant-collapse-extra{
+  .ant-collapse-extra {
     margin: 0 20px;
+  }
+  .ant-btn-danger {
+    margin-right: 20px
+  }
+  .anticon-question-circle {
+        margin-left: 10px;
   }
 `
 export const Flex = styled.div`
@@ -20,12 +26,13 @@ export const Flex = styled.div`
   div {
     display: flex;
     flex: 1;
+    align-items: center;
     .ant-input {
       flex: 2;
       margin: 0 20px;
     }
     label {
-      width: 110px;
+      width: 130px;
       margin-right: 20px;
     }
 
