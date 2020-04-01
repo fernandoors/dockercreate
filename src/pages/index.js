@@ -99,7 +99,7 @@ const IndexPage = () => {
   }
   return (
     <Layout>
-      <SEO title="Docker Create Image" />
+      <SEO title="Docker Create Image" description="Create your DOCKERFILE using best practices from official documentation and communities suggestions" />
       <Buttons handleTemplate={handleTemplate} />
       <DockerForm
         data={data}
