@@ -2,6 +2,7 @@ import React from "react"
 import { Button, Card, Input, Radio, Select, Collapse, Tooltip } from "antd"
 import { Container, Flex, Extras } from "./styles"
 import { PlusCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons"
+import SEO from "../seo"
 
 export default function DockerForm(props) {
   const {
@@ -18,6 +19,7 @@ export default function DockerForm(props) {
 
   return (
     <>
+      <SEO title="DOCKER FORM" description="Field inputs to generate your dockerfile" />
       <Container>
         <Card title="Docker File Form" extra={
           <>

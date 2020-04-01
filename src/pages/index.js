@@ -99,7 +99,7 @@ const IndexPage = () => {
   }
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Docker Create Image" />
       <Buttons handleTemplate={handleTemplate} />
       <DockerForm
         data={data}
@@ -112,16 +112,13 @@ const IndexPage = () => {
         handleModal={handleModal}
         handleCleanState={handleCleanState}
       />
-      <div>
-
-        <ModalPreview
-          modalVisible={modalVisible}
-          handleDownload={handleDownload}
-          handleModal={handleModal}
-          handleCopy={handleCopy}
-          preview={preview}
-        />
-      </div>
+      <ModalPreview
+        modalVisible={modalVisible}
+        handleDownload={handleDownload}
+        handleModal={handleModal}
+        handleCopy={handleCopy}
+        preview={preview}
+      />
       <br />
       <How />
     </Layout>
