@@ -19,7 +19,6 @@ export default function DockerForm(props) {
 
   return (
     <>
-      <SEO title="DOCKER FORM" description="Field inputs to generate your dockerfile" />
       <Container>
         <Card title="Docker File Form" extra={
           <>

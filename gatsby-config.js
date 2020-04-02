@@ -18,6 +18,16 @@ module.exports = {
     "gatsby-plugin-antd",
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Roboto\:300,400,400i,500,700`,
+          `source sans pro\:300,400,400i,700`
+        ],
+        display: 'swap'
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
@@ -26,7 +36,9 @@ module.exports = {
         background_color: `#3099EA`,
         theme_color: `#3099EA`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        url: "https://www.dockercreate.com",
+        image: "/images/docker-create-icon.png",
+        icon: `src/images/docker-create-icon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

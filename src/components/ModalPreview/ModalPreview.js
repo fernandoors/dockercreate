@@ -3,13 +3,11 @@ import { Button, Modal, Tooltip } from 'antd'
 import { CopyOutlined } from "@ant-design/icons"
 import { FilePreview } from "./styles"
 import { QuestionCircleOutlined } from "@ant-design/icons"
-import SEO from '../seo'
 
 export default function ModalPreview(props) {
   const { modalVisible, handleDownload, handleModal, handleCopy, preview } = props
   return (
     <>
-      <SEO title="DOCKER IMAGE PREVIEW" description="Get your dockerfile to build images" />
       <Modal
         title={<label>Preview
         <Tooltip title={<div>

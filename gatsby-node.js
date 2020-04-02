@@ -1,7 +1,17 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
+const { templateImage } = require("./src/utils/templateImage")
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  const pageTemplate = path.resolve('src/templates/imageTemplates.js')
+
+  templateImage.forEach(image => {
+    createPage({
+      path: `/${image.id}`,
+      component: pageTemplate,
+      context: {
+        page: image.id
+      }
+    })
+  })
+}
