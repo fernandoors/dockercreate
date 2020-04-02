@@ -2,7 +2,6 @@ import React from "react"
 import { Button, Card, Input, Radio, Select, Collapse, Tooltip } from "antd"
 import { Container, Flex, Extras } from "./styles"
 import { PlusCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons"
-import SEO from "../seo"
 
 export default function DockerForm(props) {
   const {
@@ -29,7 +28,12 @@ export default function DockerForm(props) {
               Generate
             </Button>
           </>
-        }>
+        }
+          actions={[
+            <Button type="danger" onClick={handleCleanState}>Clean</Button>,
+            <Button type="primary" onClick={handleModal}>Generate DockerFile</Button>
+          ]}
+        >
           <Flex>
             <div>
               <label htmlFor="Image Name">FROM

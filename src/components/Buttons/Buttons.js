@@ -8,8 +8,8 @@ export default function Buttons({ handleTemplate, templateImage }) {
     <>
       <Container>
         <Card
+          htmlFor='Images templates references'
           title="IMAGE TEMPLATE"
-          extra={<a href="#"></a>}
         >
           <ButtonComponent>
             {templateImage.map(image => (

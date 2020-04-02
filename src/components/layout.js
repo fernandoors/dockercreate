@@ -34,10 +34,12 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          Authors: <a href="https:www.github.com/fernandoors">Fernandoors</a> &{" "}
-          <a href="https:www.github.com/brpadilha">BrPadilha</a> ©{" "}
-          {new Date().getFullYear()}, Built with
+        <footer style={{ textAlign: 'center' }}>
+          <br />
+          Authors: <a target="_blank" rel="noopener noreferrer" href="https:www.github.com/fernandoors">Fernandoors</a> &{" "}
+          <a target="_blank" rel="noopener noreferrer" href="https:www.github.com/brpadilha">BrPadilha</a>
+          <br />
+          ©{" "} {new Date().getFullYear()} Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>

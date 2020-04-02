@@ -9,19 +9,22 @@ export default function ModalPreview(props) {
   return (
     <>
       <Modal
-        title={<label>Preview
+        title={
+          <label htmlFor='Preview your DockerFile image, copy or download then and insert into your project main directory' >Preview
         <Tooltip title={<div>
-            <ol>
-              <li>Save this Dockerfile into yout project directory</li>
-              <li>Then build docker using this command:
+              <ol>
+                <li>Save this Dockerfile into yout project directory</li>
+                <li>Then build docker using this command:
           <br />
-                <strong>docker build .</strong>
-              </li>
-            </ol>
-          </div>}>
-            <QuestionCircleOutlined style={{ marginLeft: 10 }} />
-          </Tooltip>
-        </label>}
+                  <strong>docker build .</strong>
+                </li>
+              </ol>
+            </div>
+            }>
+              <QuestionCircleOutlined style={{ marginLeft: 10 }} />
+            </Tooltip>
+          </label>
+        }
         visible={modalVisible}
         onOk={handleDownload}
         onCancel={handleModal}

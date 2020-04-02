@@ -17,6 +17,39 @@ export const Container = styled.div`
   .anticon-question-circle {
         margin-left: 10px;
   }
+  .ant-card-actions{
+    display: none;
+  }
+  @media (max-width: 500px) {
+    .ant-collapse-content-box{
+      >div{
+        border: 1px dashed rgba(0,0,0,0.3);
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        .ant-select, .ant-input{
+          width: 100%;
+          margin: 15px 0;
+        }
+        .ant-btn{
+          align-self: flex-end;
+        }
+      }
+    }
+    .ant-card-actions{
+      display: block;
+      .ant-btn-primary{
+        position: relative;
+        right: 16px;
+      }
+    }
+    .ant-card-extra{
+      display: none;
+    }
+    
+  }
 `
 export const Flex = styled.div`
   display: flex;
@@ -48,6 +81,33 @@ export const Flex = styled.div`
     .ant-select {
       width: 200px;
       margin: 0 20px;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    >div{
+      width: 100%;
+      > label{
+        width: auto;
+        text-align: left;
+      }
+      .ant-input, .ant-select, .ant-radio-group {
+        width: auto;
+      }
+      margin: 15px 0;
+    }
+  }
+  @media (max-width: 500px) {
+    >div{
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      >label{
+        padding-left: 20px;
+        margin-bottom: 10px;
+      }
     }
   }
 `
