@@ -1,25 +1,29 @@
 import React from "react"
 
-import { ButtonComponent } from "./styles"
+import { ButtonComponent, Container } from "./styles"
 import { templateImage } from "../../utils/templateImage"
 import { Button, Card } from "antd"
+import SEO from "../seo"
 
-export default function Buttons() {
+export default function Buttons({ handleTemplate }) {
   return (
     <>
-      <Card
-        title="IMAGE TEMPLATE"
-        extra={<a href="#"></a>}
-        // style={{ width: 300 }}
-      >
-        <ButtonComponent>
-          {templateImage.map(image => (
-            <Button key={image.id} type="primary">
-              {image.name}
-            </Button>
-          ))}
-        </ButtonComponent>
-      </Card>
+      <SEO title="DOCKER IMAGES" description="Get docker images templates to run your projects" />
+      <Container>
+        <Card
+          title="IMAGE TEMPLATE"
+          extra={<a href="#"></a>}
+        >
+          <ButtonComponent>
+            {templateImage.map(image => (
+              <Button key={image.name} shape="round" type="primary" onClick={() => handleTemplate(image)}>
+                {image.id}
+                <SEO title={`docker ${image.id}`} description={`Get a docker template to ${image.id} environment`} />
+              </Button>
+            ))}
+          </ButtonComponent>
+        </Card>
+      </Container>
     </>
   )
 }
