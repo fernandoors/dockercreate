@@ -11,16 +11,16 @@ FROM ${image.name}:${image.version}${size}
 
 WORKDIR ${image.dirDestination}
 
-COPY ${image.packageFile} ./
+${image.packageFile && `COPY ${image.packageFile} ./`}
 
 ${extrasCommands}
-RUN ${image.libInstall}
+${image.libInstall && `RUN ${image.libInstall}`}
 
 COPY ${image.dirSource} ${image.dirDestination}
 
 EXPOSE ${image.ports.replace(",", " ")}
 
-CMD [${cmd}]
+${cmd.length > 1 ? `CMD [${cmd}]` : ''}
 
 `
 }
