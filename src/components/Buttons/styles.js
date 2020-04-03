@@ -15,6 +15,9 @@ export const ButtonComponent = styled.div`
   .ant-btn {
     width: 100%;
   }
+  .ant-btn:hover{
+    color: black;
+  }
   @media (max-width: 450px) {
     grid: none;
     margin: 15px 0;

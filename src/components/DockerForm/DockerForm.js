@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Card, Input, Radio, Select, Collapse, Tooltip } from "antd"
+import { Button, Card, Input, Select, Collapse, Tooltip } from "antd"
 import { Container, Flex, Extras } from "./styles"
 import { PlusCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons"
 
@@ -7,7 +7,7 @@ export default function DockerForm(props) {
   const {
     data,
     handleInput,
-    handleSelect,
+    // handleSelect,
     handleModal,
     handleNewCommand,
     handleDeleteCommand,
@@ -37,32 +37,37 @@ export default function DockerForm(props) {
           <Flex>
             <div>
               <label htmlFor="Image Name">FROM
-                <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+                <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos, python, php, etc.'}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input name="name" value={data.name} onChange={handleInput} />
+              <Input aria-label="Input Image Name" name="name" value={data.name} onChange={handleInput} />
             </div>
             <div>
-              <label htmlFor="Image Version Reference">VERSION
-              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <label htmlFor="Image Version Reference. PS. Get correct image from docker hub page">VERSION
+              <Tooltip title={'Input the image version. Get correct image from docker hub page'}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Select
+              <Input aria-label="Input Image Version"
+                name="version"
+                value={data.version}
+                onChange={handleInput}
+              />
+              {/* <Select
                 value={data.version}
                 onChange={value => handleSelect("version", value)}
               >
                 <Select.Option value="1"> 1 </Select.Option>
                 <Select.Option value="2"> 2 </Select.Option>
                 <Select.Option value="3"> 3 </Select.Option>
-              </Select>
+              </Select> */}
             </div>
           </Flex>
           <Flex>
-            <div>
+            {/* <div>
               <label htmlFor="Size of Image">IMAGE SIZE
-              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <Tooltip title={'Select Image sizer, this itens means how much MBs image is '}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
@@ -76,24 +81,24 @@ export default function DockerForm(props) {
                 <Radio.Button value="slim">SLIM</Radio.Button>
                 <Radio.Button value="alpine">ALPINE</Radio.Button>
               </Radio.Group>
-            </div>
+            </div> */}
             <div>
               <label htmlFor="Ports Usage in your Project">PORTS
-              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <Tooltip title={'Ports to access from Host to Container. Ex. 3333 8080'}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input name="ports" value={data.ports} onChange={handleInput} />
+              <Input aria-label="Search" name="ports" value={data.ports} onChange={handleInput} />
             </div>
           </Flex>
           <Flex>
             <div>
               <label htmlFor="Code Source in your Machine">CODE SOURCE
-              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <Tooltip title={'Directory where your project is saved into your machine (Host) Ex: ./ or ./app '}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input
+              <Input aria-label="Input Source Dir (on Host)"
                 name="dirSource"
                 value={data.dirSource}
                 onChange={handleInput}
@@ -101,11 +106,11 @@ export default function DockerForm(props) {
             </div>
             <div>
               <label htmlFor="Code Destination in Container">CODE DEST
-              <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+              <Tooltip title={'Directory where your project is saved into your container (Image) Ex: /usr/src/myapp or /usr/share/nginx/html or /app '}>
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input
+              <Input aria-label="Input Destination dir (on Container)"
                 name="dirDestination"
                 value={data.dirDestination}
                 onChange={handleInput}
@@ -113,11 +118,11 @@ export default function DockerForm(props) {
             </div>
           </Flex>
           <label htmlFor="CLI script to run project">START SCRIPT
-          <Tooltip title={'Input a image reference: Ex. node, ubuntu, centos'}>
+          <Tooltip title={'Input command to start your project. Ex. php ./index.php or npm start, etc.'}>
               <QuestionCircleOutlined />
             </Tooltip>
           </label>
-          <Input.TextArea value={data.runScript} onChange={handleInput} />
+          <Input.TextArea aria-label="Input Run command" value={data.runScript} onChange={handleInput} />
           <Collapse bordered={false}>
             <Collapse.Panel
               extra={<PlusCircleOutlined onClick={handleNewCommand} />}
@@ -139,15 +144,15 @@ export default function DockerForm(props) {
                   </Select>
                   {extras.key === "COPY" || extras.key === "ENV" ? (
                     <>
-                      <Input
-                        placeholder="Data Source"
+                      <Input aria-label="Input data source (on Host)"
+                        placeholder={extras.key === 'COPY' ? "Data Source" : 'KEY'}
                         value={extras.value}
                         onChange={e =>
                           handleExtraInput(extras.id, "value", e.target.value)
                         }
                       />
-                      <Input
-                        placeholder="Data Destination"
+                      <Input aria-label="Input data destination (on Container)"
+                        placeholder={extras.key === 'COPY' ? "Data Destination" : 'VALUE'}
                         value={extras.extra}
                         onChange={e =>
                           handleExtraInput(extras.id, "extra", e.target.value)
@@ -155,7 +160,7 @@ export default function DockerForm(props) {
                       />
                     </>
                   ) : (
-                      <Input
+                      <Input aria-label={`Input value ${extras.key && 'of ' + extras.key}`}
                         value={extras.value}
                         onChange={e =>
                           handleExtraInput(extras.id, "value", e.target.value)

@@ -32,7 +32,7 @@ module.exports = {
       options: {
         name: `gatsby-starter-default`,
         short_name: `starter`,
-        start_url: `/`,
+        start_url: `https://dockercreate.com/`,
         background_color: `#3099EA`,
         theme_color: `#3099EA`,
         display: `minimal-ui`,
@@ -44,5 +44,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
+    'gatsby-plugin-robots-txt',
+    `gatsby-plugin-advanced-sitemap`,
   ],
 }

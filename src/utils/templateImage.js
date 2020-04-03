@@ -15,6 +15,7 @@ const extraCommands = (key = '', value = '', extra = '') => ({
 const templateImage = [
   {
     id: "node",
+    display: 'Node JS',
     name: "node",
     version: '10',
     size: 'default',
@@ -31,6 +32,7 @@ const templateImage = [
   },
   {
     id: "php",
+    display: 'PHP',
     name: "php",
     version: '10',
     size: 'default',
@@ -47,6 +49,7 @@ const templateImage = [
   },
   {
     id: "python",
+    display: 'Python',
     name: "PYTHON",
     libs: "pa",
     version: '',
@@ -60,7 +63,8 @@ const templateImage = [
     extraCommands: [extraCommands()]
   },
   {
-    id: "java",
+    id: "openjdk",
+    display: 'Java',
     name: "JAVA",
     libs: "pa",
     version: '',
@@ -74,7 +78,8 @@ const templateImage = [
     extraCommands: [extraCommands()]
   },
   {
-    id: ".net",
+    id: "microsoft-dotnet-core",
+    display: 'dotNet',
     name: ".NET",
     libs: "pa",
     version: '',
@@ -88,8 +93,9 @@ const templateImage = [
     extraCommands: [extraCommands()]
   },
   {
-    id: "go",
-    name: "GO",
+    id: "golang",
+    display: 'Node JS',
+    name: "golang",
     libs: "pa",
     version: '',
     size: '',
@@ -103,6 +109,7 @@ const templateImage = [
   },
   {
     id: "ruby",
+    display: 'Ruby',
     name: "RUBY",
     libs: "pa",
     version: '',
@@ -117,6 +124,7 @@ const templateImage = [
   },
   {
     id: "ngix",
+    display: 'Node JS',
     name: "NGIX",
     libs: "pa",
     version: '',

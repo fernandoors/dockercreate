@@ -13,9 +13,9 @@ export default function Buttons({ handleTemplate, templateImage }) {
         >
           <ButtonComponent>
             {templateImage.map(image => (
-              <Link key={image.id} to={`/${image.id}`}>
+              <Link aria-label={`Template image to ${image.display}`} key={image.id} to={`/${image.id}`}>
                 <Button shape="round" type="primary">
-                  {image.id}
+                  {image.display}
                 </Button>
               </Link>
             ))}
