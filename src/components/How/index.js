@@ -133,11 +133,11 @@ export default function How() {
         </Panel>
         <Panel header="How to see logs?" key="7">
 
-          To run a command into your container run this command:
+          To check logs informations into your container run this command:
           <CliStyle
             onClick={() => handleCopy("docker logs <my_container_id>")}
             htmlFor='Copy Command run shell command into the container'
-          > docker exec -i -t {`<my_container_id>`} {`<command>`}</CliStyle>
+          > docker logs  {`<my_container_id>`}</CliStyle>
         </Panel>
       </Collapse>
     </Container>
