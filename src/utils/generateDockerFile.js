@@ -16,7 +16,7 @@ COPY ${image.packageFile} ./
 ${extrasCommands}
 RUN ${image.libInstall}
 
-COPY . ./
+COPY ${image.dirSource} ${image.dirDestination}
 
 EXPOSE ${image.ports.replace(",", " ")}
 
