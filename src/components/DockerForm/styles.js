@@ -42,7 +42,7 @@ export const Container = styled.div`
       display: block;
       .ant-btn-primary{
         position: relative;
-        right: 16px;
+        right: 26px;
       }
     }
     .ant-card-extra{

@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Link } from 'gatsby'
 import { ButtonComponent, Container } from "./styles"
 import { Button, Card } from "antd"
 
@@ -13,9 +13,11 @@ export default function Buttons({ handleTemplate, templateImage }) {
         >
           <ButtonComponent>
             {templateImage.map(image => (
-              <Button key={image.name} shape="round" type="primary" onClick={() => handleTemplate(image)}>
-                {image.id}
-              </Button>
+              <Link key={image.id} to={`/${image.id}`}>
+                <Button shape="round" type="primary">
+                  {image.id}
+                </Button>
+              </Link>
             ))}
           </ButtonComponent>
         </Card>

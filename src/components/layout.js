@@ -36,8 +36,8 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <footer style={{ textAlign: 'center' }}>
           <br />
-          Authors: <a target="_blank" rel="noopener noreferrer" href="https:www.github.com/fernandoors">Fernandoors</a> &{" "}
-          <a target="_blank" rel="noopener noreferrer" href="https:www.github.com/brpadilha">BrPadilha</a>
+          Authors: <a target="_blank" rel="noopener noreferrer" href="https://www.github.com/fernandoors">Fernandoors</a> &{" "}
+          <a target="_blank" rel="noopener noreferrer" href="https://www.github.com/brpadilha">BrPadilha</a>
           <br />
           ©{" "} {new Date().getFullYear()} Built with
           {` `}

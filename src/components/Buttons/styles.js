@@ -12,6 +12,9 @@ export const ButtonComponent = styled.div`
   padding: 30px;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  .ant-btn {
+    width: 100%;
+  }
   @media (max-width: 450px) {
     grid: none;
     margin: 15px 0;
