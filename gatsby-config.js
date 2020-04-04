@@ -3,7 +3,7 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.dockercreate.com',
+    siteUrl: 'https://www.dockercreate.com/',
     title: `Docker Create`,
     description: `Create your Dockerfile .`,
     author: `@brpadilha and @fernandoors`,
@@ -36,11 +36,11 @@ module.exports = {
       options: {
         name: `Docker Create - Using best practices in your docker projects`,
         short_name: `Docker Create`,
-        start_url: `https://dockercreate.com/`,
+        start_url: `https://www.dockercreate.com/`,
         background_color: `#3099EA`,
         theme_color: `#3099EA`,
         display: `minimal-ui`,
-        url: "https://www.dockercreate.com",
+        url: "https://www.dockercreate.com/",
         image: "/images/docker-create-icon.png",
         icon: `src/images/docker-create-icon.png`,
       },
