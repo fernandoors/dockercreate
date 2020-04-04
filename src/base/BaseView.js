@@ -102,7 +102,7 @@ function BaseView({ id = '' }) {
   }
   return (
     <>
-      <SEO title={`docker ${id || 'Create Image'}`} description={`Get a docker template to ${id || 'your project'} environment`} />
+      <SEO title={`Docker ${id || 'Create Image'}`} description={`Get a docker template to ${id || 'your project'} environment with the best practices by official documentation`} />
       <Buttons handleTemplate={handleTemplate} templateImage={templateImage} />
       <DockerForm
         data={data}
