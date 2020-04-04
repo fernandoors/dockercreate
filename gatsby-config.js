@@ -1,5 +1,9 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://www.dockercreate.com',
     title: `Docker Create`,
     description: `Create your Dockerfile .`,
     author: `@brpadilha and @fernandoors`,
@@ -39,6 +43,29 @@ module.exports = {
         url: "https://www.dockercreate.com",
         image: "/images/docker-create-icon.png",
         icon: `src/images/docker-create-icon.png`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: process.env.API_KEY ,
+          authDomain: process.env.AUTH_DOMAIN ,
+          databaseURL: process.env.DATABASE_URL ,
+          projectId: process.env.PROJECT_ID ,
+          storageBucket: process.env.STORAGE_BUCKET ,
+          messagingSenderId: process.env.MESSAGING_SENDER_ID ,
+          appId: process.env.APP_ID,
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
+        head: false,
+        anonymize: true,
+        respectDNT: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
