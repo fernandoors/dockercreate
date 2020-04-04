@@ -1,5 +1,5 @@
 import React from "react"
-import { Collapse, Tabs, message } from "antd"
+import { Tabs, message } from "antd"
 
 import { Container, CliStyle } from "./styles"
 const { TabPane } = Tabs
@@ -35,7 +35,10 @@ export default function How() {
             <p>
               To install docker on Windows, download and install Docker Desktop
               Hub&nbsp;
-              <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">
+              <a
+                target="_blank" rel="external nofollow noopener noreferrer"
+                title='Get official software Windows'
+                href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">
                 here
               </a>
             </p>
@@ -51,7 +54,12 @@ export default function How() {
           <TabPane tab="Mac" key="2">
             To install docker on Mac, download and install Docker Desktop
             Hub&nbsp;
-              <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">
+              <a
+              title='Get official software for MAC'
+              target="_blank"
+              rel="external nofollow noopener noreferrer"
+              href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">
+
               here
               </a>
             <br /><br />
@@ -95,7 +103,12 @@ export default function How() {
         </p>
         <small>
           To learn more read the official documentation: {' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://docs.docker.com/engine/reference/commandline/build/">Docker Docs</a>
+          <a
+            title='Read official documentation about build image'
+            target="_blank"
+            rel="external nofollow noopener noreferrer"
+            href="https://docs.docker.com/engine/reference/commandline/build/">Docker Docs</a>
+
         </small>
       </div>
       <br /><br />
@@ -110,7 +123,11 @@ export default function How() {
           <br /><br />
           <small>
             To learn more read the official documentation: {' '}
-            <a target="_blank" rel="noopener noreferrer" href="https://docs.docker.com/engine/reference/run/">Docker Docs</a>
+            <a
+              title='Read official documentation about Run container'
+              rel="external nofollow noopener noreferrer"
+              target="_blank"
+              href="https://docs.docker.com/engine/reference/run/">Docker Docs</a>
           </small>
         </p>
       </div>

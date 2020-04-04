@@ -13,7 +13,7 @@ export default function Buttons({ handleTemplate, templateImage }) {
         >
           <ButtonComponent>
             {templateImage.map(image => (
-              <Link aria-label={`Template image to ${image.display}`} key={image.id} to={`/${image.id}`}>
+              <Link title={`Docker ${image.display} image`} aria-label={`Template image to ${image.display}`} key={image.id} to={`/${image.id}`}>
                 <Button shape="round" type="primary">
                   {image.display}
                 </Button>
