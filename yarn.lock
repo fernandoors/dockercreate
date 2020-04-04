@@ -873,7 +873,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
   integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
@@ -6051,6 +6051,13 @@ gatsby-plugin-firebase@^0.2.0-beta.4:
   version "0.2.0-beta.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-firebase/-/gatsby-plugin-firebase-0.2.0-beta.4.tgz#a4d8bfdce8c65efa284d0c523f8524c28f4a786c"
   integrity sha512-F1uh9T5dY38aeNvKzqj+3K655dce1QS70wuG4bhV9L3cnTJR2vitTWyIoCvRJJfPs7Xq7LgjUDmHDrEos4S3gQ==
+
+gatsby-plugin-google-adsense@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-adsense/-/gatsby-plugin-google-adsense-1.1.3.tgz#267e24880a7634d988bb09b920a115a80f826d55"
+  integrity sha512-tzEg4UIMXCTn+NSB580jzvOgDVTY/+ZbSwQ0EfHUDDqdnvI5KnSQP84mGC5bd96Qy9L15+l9ZRtZ17EdoKBe7g==
+  dependencies:
+    "@babel/runtime" "^7.2.0"
 
 gatsby-plugin-google-analytics@^2.2.2:
   version "2.2.2"

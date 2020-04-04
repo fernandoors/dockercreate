@@ -34,8 +34,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Docker Create - Using best practices in your docker projects`,
+        short_name: `Docker Create`,
         start_url: `https://dockercreate.com/`,
         background_color: `#3099EA`,
         theme_color: `#3099EA`,
@@ -44,6 +44,12 @@ module.exports = {
         image: "/images/docker-create-icon.png",
         icon: `src/images/docker-create-icon.png`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-5085086136982290`
+      }
     },
     {
       resolve: "gatsby-plugin-firebase",
