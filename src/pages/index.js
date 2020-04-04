@@ -7,7 +7,7 @@ import BaseView from '../base/BaseView'
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Docker Create Image" description="Create your DOCKERFILE using best practices from official documentation and communities suggestions" />
+      {/* <SEO title="Docker Create Image" description="Create your DOCKERFILE using best practices from official documentation and communities suggestions" /> */}
       <BaseView />
     </Layout>
   )
