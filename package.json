@@ -35,6 +35,8 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -43,6 +45,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "api": "nodemon server.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
