@@ -11,15 +11,13 @@ import generateDockerFile from "../utils/generateDockerFile"
 
 import { extraCommands, templateImage } from "../utils/templateImage"
 import ModalPreview from "../components/ModalPreview/ModalPreview"
+import { Container } from "./styles"
 
 const initialStateData = {
   name: "",
   version: "",
-  size: "",
   dirSource: "",
   dirDestination: "",
-  packageFile: "",
-  libInstall: "",
   ports: "",
   runScript: "",
   extraCommands: [extraCommands()],
@@ -101,8 +99,9 @@ function BaseView({ id = '' }) {
     setData(template)
   }
   return (
-    <>
+    <Container>
       <SEO title={`Docker ${id || 'Create Image'}`} description={`Get a docker template to ${id || 'your project'} environment with the best practices by official documentation`} />
+      <h2>Create or Customize a new DockerFile using this form and getting templates suggestions by official documentation and community.</h2>
       <Buttons handleTemplate={handleTemplate} templateImage={templateImage} />
       <DockerForm
         data={data}
@@ -124,7 +123,7 @@ function BaseView({ id = '' }) {
       />
       <br />
       <How />
-    </>
+    </Container>
   )
 }
 

@@ -54,34 +54,9 @@ export default function DockerForm(props) {
                 value={data.version}
                 onChange={handleInput}
               />
-              {/* <Select
-                value={data.version}
-                onChange={value => handleSelect("version", value)}
-              >
-                <Select.Option value="1"> 1 </Select.Option>
-                <Select.Option value="2"> 2 </Select.Option>
-                <Select.Option value="3"> 3 </Select.Option>
-              </Select> */}
             </div>
           </Flex>
           <Flex>
-            {/* <div>
-              <label htmlFor="Size of Image">IMAGE SIZE
-              <Tooltip title={'Select Image sizer, this itens means how much MBs image is '}>
-                  <QuestionCircleOutlined />
-                </Tooltip>
-              </label>
-              <Radio.Group
-                size="small"
-                name="size"
-                value={data.size}
-                onChange={handleInput}
-              >
-                <Radio.Button value="default">DEFAULT</Radio.Button>
-                <Radio.Button value="slim">SLIM</Radio.Button>
-                <Radio.Button value="alpine">ALPINE</Radio.Button>
-              </Radio.Group>
-            </div> */}
             <div>
               <label htmlFor="Ports Usage in your Project">PORTS
               <Tooltip title={'Ports to access from Host to Container. Ex. 3333 8080'}>
