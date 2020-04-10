@@ -7,7 +7,17 @@ export default function Buttons({ handleTemplate, templateImage }) {
   return (
     <>
       <Container>
-        <Card htmlFor="Images templates references" title="IMAGE TEMPLATE">
+        <Card htmlFor="Images templates references" title="IMAGE TEMPLATE"
+          extra={<a
+            href="https://github.com/fernandoors/dockercreate/issues/2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button shape="round" type="dashed">
+              Suggest Template Image
+            </Button>
+          </a>}
+        >
           <ButtonComponent>
             {templateImage.map(image => (
               <Link
@@ -20,14 +30,6 @@ export default function Buttons({ handleTemplate, templateImage }) {
                 </Button>
               </Link>
             ))}
-            <a
-              href="https://github.com/fernandoors/dockercreate/issues/new"
-              target="_blank"
-            >
-              <Button shape="round" type="danger">
-                Suggest Template Image
-              </Button>
-            </a>
           </ButtonComponent>
         </Card>
       </Container>
