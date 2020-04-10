@@ -27,7 +27,27 @@ export default function How() {
 
   return (
     <Container>
-      <h2>Use Docker</h2>
+      <h2>What's Docker?</h2>
+      <p style={{ lineHeight: `1.5rem` }}>
+        Docker is an opensource project started in 2013 developer{' '}
+        and maintenance by Docker, Inc. Wrote using Go Lang, with docker{' '}
+        you could divide your project into containers, but, why is a Container?!{' '}
+        The Container is a small image of a System Operator to run specifics{' '}
+        services. It is the best solution to start microservices or simulate{' '}
+        production environment systems using less of memory and hard disk.
+      </p>
+      <small
+        htmlFor='Learn more about Docker in official documentation.'
+      >
+        Learn more about Docker in{' '}
+        <a
+          target="_blank" rel="external nofollow noopener noreferrer"
+          title='Learn more about Docker'
+          href="https://www.docker.com/resources/what-container">
+          official documentation
+        </a>.
+      </small>
+      <h2>Let's to use Docker!</h2>
       <div>
         <h3>How to install docker?</h3>
         <Tabs defaultActiveKey="1">

@@ -7,6 +7,8 @@ module.exports = {
     title: `Docker Create`,
     description: `Create your Dockerfile .`,
     author: `@brpadilha and @fernandoors`,
+    image_facebook: `facebook_profile_image.png`,
+    image_twitter: `twitter_profile_image.png`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -41,8 +43,8 @@ module.exports = {
         theme_color: `#1d8efa`,
         display: `minimal-ui`,
         url: "https://www.dockercreate.com/",
-        image: "/images/docker-create-icon.png",
-        icon: `src/images/docker-create-icon.png`,
+        image: "/images/logo.png",
+        icon: `src/images/logo_transparent.png`,
       },
     },
     {
