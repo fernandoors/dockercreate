@@ -38,16 +38,18 @@ function BaseView({ id = '' }) {
 
   function handleModal() {
     setPreview(generateDockerFile(data))
-    setModalVisible(!modalVisible)
+    setModalVisible(prev => !prev)
   }
 
   function handleInput({ target }) {
     const { value, name } = target
-    setData({ ...data, [name]: value })
+    setData(prev => ({ ...prev, [name]: value }))
   }
 
   function handleSelect(key, value) {
-    setData({ ...data, [key]: value })
+    if (key === 'name')
+      return setData(prev => ({ ...prev, [key]: value, version: '' }))
+    setData(prev => ({ ...prev, [key]: value }))
   }
 
   function handleCopy() {
@@ -67,14 +69,14 @@ function BaseView({ id = '' }) {
 
   function handleNewCommand(event) {
     event.stopPropagation()
-    setData({
-      ...data,
+    setData(prev => ({
+      ...prev,
       extraCommands: [...data.extraCommands, extraCommands()],
-    })
+    }))
   }
   function handleDeleteCommand(id) {
     const extraCommands = data.extraCommands.filter(item => item.id !== id)
-    setData({ ...data, extraCommands })
+    setData(prev => ({ ...prev, extraCommands }))
   }
   function handleExtraSelect(id, key, value) {
     const extraData = data.extraCommands.map(item => {
@@ -83,7 +85,7 @@ function BaseView({ id = '' }) {
       }
       return item
     })
-    setData({ ...data, extraCommands: extraData })
+    setData(prev => ({ ...prev, extraCommands: extraData }))
   }
   function handleExtraInput(id, key, value) {
     const extraData = data.extraCommands.map(item => {
@@ -92,7 +94,7 @@ function BaseView({ id = '' }) {
       }
       return item
     })
-    setData({ ...data, extraCommands: extraData })
+    setData(prev => ({ ...prev, extraCommands: extraData }))
   }
 
   function handleTemplate(template) {

@@ -24,7 +24,6 @@ export default function DockerForm(props) {
     return option.title.toLowerCase().indexOf(input.toLowerCase()) >= 0
   }
   useEffect(() => {
-    handleSelect('version', '')
     const [getVersion] = imagesReferences
       .filter(item => item.id === data.name)
       .map(image => image.version)
