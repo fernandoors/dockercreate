@@ -34,7 +34,7 @@ export default function How() {
         you could divide your project into containers, but, why is a Container?!{' '}
         The Container is a small image of a System Operator to run specifics{' '}
         services. It is the best solution to start microservices or simulate{' '}
-        production environment systems using less of memory and hard disk.
+        production environment systems using less memory and hard disk.
       </p>
       <small
         htmlFor='Learn more about Docker in official documentation.'

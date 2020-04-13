@@ -1,6 +1,9 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
+  *{
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important 
+  }
   .ant-card {
     margin-bottom: 20px;
     border-radius: 10px;
@@ -82,6 +85,15 @@ export const Flex = styled.div`
       width: 200px;
       margin: 0 20px;
     }
+    .ant-select-selector{
+      width: 120px;
+      height: 40px;
+    }
+  }
+  .anticon-info-circle{
+    position: relative;
+    top: -10px;
+    right: 15px;
   }
   @media (max-width: 768px) {
     flex-direction: column;
@@ -108,6 +120,11 @@ export const Flex = styled.div`
         padding-left: 20px;
         margin-bottom: 10px;
       }
+    }
+    .anticon-info-circle{
+      position: relative;
+      right: 0;
+      top: -30px;
     }
   }
 `

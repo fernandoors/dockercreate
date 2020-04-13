@@ -1,7 +1,7 @@
 export default function generateDockerFile(image) {
   const cmd = image.runScript
     .split(" ")
-    .map(item => item.length ? `'${item}'`: '')
+    .map(item => item.length ? `'${item}'` : '')
     .filter(item => item !== '')
   const extrasCommands = image.extraCommands.reduce(
     (prev, current) =>
@@ -9,7 +9,7 @@ export default function generateDockerFile(image) {
     ""
   )
   return `
-FROM ${image.name}:${image.version}
+FROM ${image.name}${image.version ? ':' + image.version : ''}
 
 WORKDIR ${image.dirDestination}
 

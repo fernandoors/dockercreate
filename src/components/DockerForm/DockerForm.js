@@ -1,13 +1,17 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Button, Card, Input, Select, Collapse, Tooltip } from "antd"
 import { Container, Flex, Extras } from "./styles"
-import { PlusCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons"
+import imagesReferences from '../../utils/images.json'
+import { PlusCircleOutlined, QuestionCircleOutlined, InfoCircleOutlined } from "@ant-design/icons"
+const { Option, OptGroup } = Select
 
 export default function DockerForm(props) {
+  const [hasVersions, setHasVersions] = useState(false)
+  const [versions, setVersions] = useState([])
   const {
     data,
     handleInput,
-    // handleSelect,
+    handleSelect,
     handleModal,
     handleNewCommand,
     handleDeleteCommand,
@@ -15,7 +19,25 @@ export default function DockerForm(props) {
     handleExtraInput,
     handleCleanState
   } = props
-
+  const handleFilter = (input, option) => {
+    if (!option.title) return
+    return option.title.toLowerCase().indexOf(input.toLowerCase()) >= 0
+  }
+  useEffect(() => {
+    handleSelect('version', '')
+    const [getVersion] = imagesReferences
+      .filter(item => item.id === data.name)
+      .map(image => image.version)
+    setVersions(getVersion)
+    if (!!getVersion)
+      setHasVersions(!!getVersion.length || false)
+  }, [data.name])
+  function handleSelectName(item) {
+    handleSelect('name', item)
+  }
+  function handleSelectVersion(item) {
+    handleSelect('version', item)
+  }
   return (
     <>
       <Container>
@@ -41,7 +63,39 @@ export default function DockerForm(props) {
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input aria-label="Input Image Name" name="name" value={data.name} onChange={handleInput} />
+
+              <Select
+                value={data.name ? [data.name] : []}
+                showSearch
+                mode="tags"
+                filterOption={handleFilter}
+                onSelect={handleSelectName}
+              >
+                <OptGroup label="Certificate Images">
+                  {imagesReferences
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map(image => (
+                      <Option key={image.id} title={image.name}>
+                        <Tooltip title={image.name}>
+                          {image.name}
+                        </Tooltip>
+                      </Option>
+                    ))}
+                </OptGroup>
+              </Select>
+              {imagesReferences
+                .filter(item => item.id === data.name).length ?
+                <a
+                  className='helper'
+                  target="_blank" rel="external nofollow noopener noreferrer"
+                  title='Get official image information'
+                  href={`https://hub.docker.com/_/${data.name}`}>
+                  <Tooltip title='Image Documentation'>
+                    <InfoCircleOutlined />
+                  </Tooltip>
+                </a>
+                : ''
+              }
             </div>
             <div>
               <label htmlFor="Image Version Reference. PS. Get correct image from docker hub page">VERSION
@@ -49,11 +103,28 @@ export default function DockerForm(props) {
                   <QuestionCircleOutlined />
                 </Tooltip>
               </label>
-              <Input aria-label="Input Image Version"
-                name="version"
-                value={data.version}
-                onChange={handleInput}
-              />
+              {hasVersions ?
+                <Select
+                  value={data.version ? [data.version] : []}
+                  mode="tags"
+                  showSearch
+                  onSelect={handleSelectVersion}
+                >
+                  {versions.map(version =>
+                    <Option key={version} title={version}>
+                      <Tooltip title={version}>
+                        {version}
+                      </Tooltip>
+                    </Option>
+                  )}
+                </Select>
+                :
+                <Input aria-label="Input Image Version"
+                  name="version"
+                  value={data.version}
+                  onChange={handleInput}
+                />
+              }
             </div>
           </Flex>
           <Flex>
@@ -97,10 +168,15 @@ export default function DockerForm(props) {
               <QuestionCircleOutlined />
             </Tooltip>
           </label>
-          <Input.TextArea aria-label="Input Run command" value={data.runScript} onChange={handleInput} />
+          <Input.TextArea aria-label="Input Run command" name='runScript' value={data.runScript} onChange={handleInput} />
           <Collapse bordered={false}>
             <Collapse.Panel
-              extra={<PlusCircleOutlined onClick={handleNewCommand} />}
+              extra={<>
+                <PlusCircleOutlined onClick={handleNewCommand} />
+                <Tooltip title={'Set Commands, Volumes, Users, Environments and Path files into your DockerFile.'}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </>}
               header="Extra Commands"
               key="extra-commands"
             >

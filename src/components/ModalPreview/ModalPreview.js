@@ -29,8 +29,8 @@ export default function ModalPreview(props) {
         onOk={handleDownload}
         onCancel={handleModal}
         footer={[
-          <Button onClick={handleModal}>Cancel</Button>,
-          <Button type="primary" onClick={handleDownload}>Download</Button>,
+          <Button key='1' onClick={handleModal}>Cancel</Button>,
+          <Button key='2' type="primary" onClick={handleDownload}>Download</Button>,
         ]}
       >
         <FilePreview>
