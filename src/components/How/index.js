@@ -47,11 +47,12 @@ export default function How() {
           official documentation
         </a>.
       </small>
+      <br /><br />
       <h2>Let's to use Docker!</h2>
       <div>
         <h3>How to install docker?</h3>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="Windows" key="1">
+        <Tabs defaultActiveKey="1" type="card">
+          <TabPane aria-label='Install Docker on Windows' tab="Windows" key="1">
             <p>
               To install docker on Windows, download and install Docker Desktop
               Hub&nbsp;
@@ -71,7 +72,7 @@ export default function How() {
               PS. Docker for Windows require Windows 10 Professional or Enterprise 64bit.
               </small>
           </TabPane>
-          <TabPane tab="Mac" key="2">
+          <TabPane aria-label='Install Docker on Mac' tab="Mac" key="2">
             To install docker on Mac, download and install Docker Desktop
             Hub&nbsp;
               <a
@@ -88,7 +89,7 @@ export default function How() {
               RUN command on CLI: {checkInstall()}
 
           </TabPane>
-          <TabPane tab="Ubuntu" key="3">
+          <TabPane aria-label='Install Docker on Ubuntu' tab="Ubuntu" key="3">
             Update your apt-get repository
               <CliStyle
               onClick={() => handleCopy('sudo apt-get update')}

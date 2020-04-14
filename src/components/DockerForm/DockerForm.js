@@ -67,6 +67,7 @@ export default function DockerForm(props) {
                 value={data.name ? [data.name] : []}
                 showSearch
                 mode="tags"
+                aria-label="Input or Select an Image"
                 filterOption={handleFilter}
                 onSelect={handleSelectName}
               >
@@ -74,7 +75,7 @@ export default function DockerForm(props) {
                   {imagesReferences
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map(image => (
-                      <Option key={image.id} title={image.name}>
+                      <Option key={image.id} title={image.name} aria-label={`Image: ${image.name}`}>
                         <Tooltip title={image.name}>
                           {image.name}
                         </Tooltip>
@@ -106,11 +107,12 @@ export default function DockerForm(props) {
                 <Select
                   value={data.version ? [data.version] : []}
                   mode="tags"
+                  aria-label="Input or Select an Image Version"
                   showSearch
                   onSelect={handleSelectVersion}
                 >
                   {versions.map(version =>
-                    <Option key={version} title={version}>
+                    <Option key={version} title={version} aria-label={`Version: ${version}`}>
                       <Tooltip title={version}>
                         {version}
                       </Tooltip>

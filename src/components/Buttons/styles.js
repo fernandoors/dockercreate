@@ -1,9 +1,20 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
+  .ant-card-actions{
+    display: none;
+  }
   .ant-card {
     margin-bottom: 30px;
     border-radius: 10px;
+  }
+  @media (max-width: 450px) {
+    .ant-card-actions{
+      display: block;
+    }
+    .ant-card-extra{
+      display: none;
+    }
   }
 `
 export const ButtonComponent = styled.div`

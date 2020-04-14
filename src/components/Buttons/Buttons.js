@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { ButtonComponent, Container } from "./styles"
 import { Button, Card } from "antd"
 
-export default function Buttons({ handleTemplate, templateImage }) {
+export default function Buttons({ templateImage }) {
   return (
     <>
       <Container>
@@ -17,6 +17,18 @@ export default function Buttons({ handleTemplate, templateImage }) {
               Suggest Template Image
             </Button>
           </a>}
+          actions={[
+            <a
+              href="https://github.com/fernandoors/dockercreate/issues/2"
+              target="_blank"
+              rel="noopener noreferrer"
+              key='3'
+            >
+              <Button shape="round" type="dashed">
+                Suggest Template Image
+            </Button>
+            </a>
+          ]}
         >
           <ButtonComponent>
             {templateImage.map(image => (
