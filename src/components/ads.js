@@ -7,7 +7,7 @@ function Ads() {
       meta={[
         {
           name: `lomadee-verification`,
-          content: process.env.LOMADEE_ADS,
+          content: '22873067',
         }
       ]}
     />
