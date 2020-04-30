@@ -103,7 +103,7 @@ export default function How() {
               onClick={() => handleCopy('sudo apt-get install docker-ee docker-ee-cli containerd.io')}
               htmlFor='Command to install on Ubuntu OS'
             >
-              sudo apt-get install docker-ee docker-ee-cli containerd.io
+              sudo apt-get install docker-ce docker-ce-cli containerd.io
               </CliStyle>
             <br /><br />
               RUN command on CLI: {checkInstall()}
